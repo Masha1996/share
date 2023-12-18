@@ -10,8 +10,8 @@ function share() {
             let shareData = { files: filesArray };
 
             if (navigator.canShare && navigator.canShare(shareData)) {
-                shareData.text = "Смотри как я могу! Ты тоже так можешь тут";
-                shareData.url = "https://google.com";
+                // shareData.text = "Смотри как я могу! Ты тоже так можешь тут";
+                // shareData.url = "https://google.com";
 
                 navigator
                     .share(shareData)

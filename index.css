@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 .container {
     visibility: hidden;
     position: absolute;
@@ -5,8 +11,8 @@
 }
 
 .node {
-    width: 300px;
-    height: 300px;
+    width: 100vw;
+    height: 100vh;
     background: #417c3d;
     display: flex;
     align-items: center;
