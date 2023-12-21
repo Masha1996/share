@@ -10,14 +10,17 @@ function share() {
             let shareData = { files: filesArray };
 
             if (navigator.canShare && navigator.canShare(shareData)) {
-                // shareData.text = "Смотри как я могу! Ты тоже так можешь тут";
-                // shareData.url = "https://google.com";
-
                 navigator
                     .share(shareData)
                     .then(() => alert("Share was successful"))
                     .catch((error) =>
                         alert("Sharing failed" + error)
+                    );
+            } else if (window.AndroidShareHandler) {
+                window.AndroidShareHandler.share(shareData)
+                    .then(() => alert("Webview: Share was successful"))
+                    .catch((error) =>
+                        alert("Webview: Sharing failed" + error)
                     );
             } else {
                 alert("Your system doesn't support sharing files");
