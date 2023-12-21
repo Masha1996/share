@@ -17,13 +17,23 @@ function share() {
                         alert("Sharing failed" + error)
                     );
             } else if (window.AndroidShareHandler) {
-                console.log('@@@ WEBVIEW')
-                const url = 'https://portfolio.1inch.io/#/';
-                window.AndroidShareHandler.share(url, file)
+                console.log('@@@ WEBVIEW');
+
+                const fileToAndroid = blobToBase64(blob);
+
+                fileToAndroid
+                    .then((f) => {
+                        console.log('@@@ FILE', f);
+                        const url = 'https://portfolio.1inch.io/#/';
+                        return window.AndroidShareHandler.share(url, f);
+                    })
                     .then(() => alert("Webview: Share was successful"))
                     .catch((error) =>
                         alert("Webview: Sharing failed" + error)
                     );
+
+
+
             } else {
                 alert("Your system doesn't support sharing files");
             }
@@ -42,4 +52,11 @@ function init() {
 
 init();
 
+function blobToBase64(blob) {
+    return new Promise((resolve, _) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+    });
+}
 
