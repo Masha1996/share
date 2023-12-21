@@ -7,7 +7,7 @@ function share() {
                 type: "image/png"
             });
             const filesArray = [file];
-            let shareData = { files: filesArray };
+            const shareData = { files: filesArray };
 
             if (navigator.canShare && navigator.canShare(shareData)) {
                 navigator
@@ -17,9 +17,8 @@ function share() {
                         alert("Sharing failed" + error)
                     );
             } else if (window.AndroidShareHandler.share) {
-                shareData.url = 'https://portfolio.1inch.io/#/';
-                
-                window.AndroidShareHandler.share(shareData)
+                // shareData.url = 'https://portfolio.1inch.io/#/';
+                window.AndroidShareHandler.share('https://portfolio.1inch.io/#/', filesArray)
                     .then(() => alert("Webview: Share was successful"))
                     .catch((error) =>
                         alert("Webview: Sharing failed" + error)
