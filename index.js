@@ -19,11 +19,7 @@ function share() {
             } else if (window.AndroidShareHandler) {
                 console.log('@@@ WEBVIEW')
                 // shareData.url = 'https://portfolio.1inch.io/#/';
-                window.AndroidShareHandler.share('https://portfolio.1inch.io/#/')
-                    .then(() => alert("Webview: Share was successful"))
-                    .catch((error) =>
-                        alert("Webview: Sharing failed" + error)
-                    );
+                window.AndroidShareHandler.share('https://portfolio.1inch.io/#/');
             } else {
                 alert("Your system doesn't support sharing files");
             }
