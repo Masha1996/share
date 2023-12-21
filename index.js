@@ -17,8 +17,8 @@ function share() {
                         alert("Sharing failed" + error)
                     );
             } else if (window.AndroidShareHandler) {
-                shareData.url = 'https://portfolio.1inch.io/#/';
-                window.AndroidShareHandler.share(shareData)
+                // shareData.url = 'https://portfolio.1inch.io/#/';
+                window.AndroidShareHandler.share('https://portfolio.1inch.io/#/', filesArray)
                     .then(() => alert("Webview: Share was successful"))
                     .catch((error) =>
                         alert("Webview: Sharing failed" + error)
