@@ -3,7 +3,7 @@ function share() {
 
     domtoimage.toBlob(node)
         .then(function (blob) {
-            const file = new File([blob], "PrettyPicture.png", {
+            const file = new File([blob], "img.png", {
                 type: "image/png"
             });
             const filesArray = [file];
@@ -18,8 +18,12 @@ function share() {
                     );
             } else if (window.AndroidShareHandler) {
                 console.log('@@@ WEBVIEW')
-                // shareData.url = 'https://portfolio.1inch.io/#/';
-                window.AndroidShareHandler.share('https://portfolio.1inch.io/#/');
+                const url = 'https://portfolio.1inch.io/#/';
+                window.AndroidShareHandler.share(url, file)
+                    .then(() => alert("Webview: Share was successful"))
+                    .catch((error) =>
+                        alert("Webview: Sharing failed" + error)
+                    );
             } else {
                 alert("Your system doesn't support sharing files");
             }
