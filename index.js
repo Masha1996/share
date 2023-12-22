@@ -10,6 +10,7 @@ function share() {
             const shareData = { files: filesArray };
 
             if (navigator.canShare && navigator.canShare(shareData)) {
+                shareData.text = 'Aaaaaaaaa';
                 navigator
                     .share(shareData)
                     .then(() => alert("Share was successful"))
